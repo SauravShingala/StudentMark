@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_StudentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Student">
+          <Key>
+            <PropertyRef Name="Roll_No" />
+          </Key>
+          <Property Name="Roll_No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fname" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Lname" Type="varchar" MaxLength="150" />
+          <Property Name="Math" Type="int" Nullable="false" />
+          <Property Name="Phy" Type="int" Nullable="false" />
+          <Property Name="Chem" Type="int" Nullable="false" />
+          <Property Name="Is_Active" Type="bit" />
+          <Property Name="Is_Delete" Type="bit" />
+          <Property Name="Created_date" Type="datetime" />
+          <Property Name="Updated_date" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityContainer Name="db_StudentModelStoreContainer">
+          <EntitySet Name="tbl_Student" EntityType="Self.tbl_Student" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_StudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Student">
+          <Key>
+            <PropertyRef Name="Roll_No" />
+          </Key>
+          <Property Name="Roll_No" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Math" Type="Int32" Nullable="false" />
+          <Property Name="Phy" Type="Int32" Nullable="false" />
+          <Property Name="Chem" Type="Int32" Nullable="false" />
+          <Property Name="Is_Active" Type="Boolean" />
+          <Property Name="Is_Delete" Type="Boolean" />
+          <Property Name="Created_date" Type="DateTime" Precision="3" />
+          <Property Name="Updated_date" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityContainer Name="db_StudentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Student" EntityType="Self.tbl_Student" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_StudentModelStoreContainer" CdmEntityContainer="db_StudentEntities">
+          <EntitySetMapping Name="tbl_Student">
+            <EntityTypeMapping TypeName="db_StudentModel.tbl_Student">
+              <MappingFragment StoreEntitySet="tbl_Student">
+                <ScalarProperty Name="Roll_No" ColumnName="Roll_No" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Math" ColumnName="Math" />
+                <ScalarProperty Name="Phy" ColumnName="Phy" />
+                <ScalarProperty Name="Chem" ColumnName="Chem" />
+                <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+                <ScalarProperty Name="Is_Delete" ColumnName="Is_Delete" />
+                <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+                <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

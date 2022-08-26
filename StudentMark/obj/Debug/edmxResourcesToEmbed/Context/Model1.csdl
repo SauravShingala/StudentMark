@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_StudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Student">
+    <Key>
+      <PropertyRef Name="Roll_No" />
+    </Key>
+    <Property Name="Roll_No" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Math" Type="Int32" Nullable="false" />
+    <Property Name="Phy" Type="Int32" Nullable="false" />
+    <Property Name="Chem" Type="Int32" Nullable="false" />
+    <Property Name="Is_Active" Type="Boolean" />
+    <Property Name="Is_Delete" Type="Boolean" />
+    <Property Name="Created_date" Type="DateTime" Precision="3" />
+    <Property Name="Updated_date" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityContainer Name="db_StudentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Student" EntityType="Self.tbl_Student" />
+  </EntityContainer>
+</Schema>

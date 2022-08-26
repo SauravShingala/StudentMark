@@ -1,0 +1,118 @@
+﻿@model List<StudentMark.Context.tbl_Student>
+
+@{
+    ViewBag.Title = "StudentList";
+}
+
+<div class="container">
+    <a href="javascript:void(0);" class="btn btn-primary anchorDetail">Add Student</a><br /><br />
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Roll No.</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Roll_No</td>
+                    <td>@item.Fname</td>
+                    <td>@item.Lname</td>
+
+                    <td>
+                        <a href="javascript:void(0);" class="btn btn-success anchorDetail1" data-id="@item.Roll_No">Edit</a>
+                        <a href="@Url.Action("View",new {item.Roll_No })" class="btn btn-warning" @*data-id="@item.Roll_No"*@>View</a>
+                        <a href="@Url.Action("Delete",new {item.Roll_No })" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete the member?')">Delete</a>
+                    </td>
+                </tr>
+
+            }
+        </table>  
+    </div>
+
+    <div id='myModal' class='modal'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id='myModalContent'></div>
+            </div>            
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+            var TeamDetailPostBackURL = '/Student/Student';
+            $(function () {
+                $(".anchorDetail").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: TeamDetailPostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            debugger;
+                            $('#myModalContent').html(data);
+                            $('#myModal').modal(options);
+                            $('#myModal').modal('show');
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+                $("#closbtn").click(function () {
+                    $('#myModal').modal('hide');
+                });
+            });
+
+            var TeamDetailPostBackURL1 = '/Student/Edit';
+            $(function () {
+                $(".anchorDetail1").click(function () {
+                    debugger;
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: TeamDetailPostBackURL,
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+                            debugger;
+                            $('#myModalContent').html(data);
+                            $('#myModal').modal(options);
+                            $('#myModal').modal('show');
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+
+                $("#closbtn").click(function () {
+                    $('#myModal').modal('hide');
+                });
+            });
+    </script>
+}
+
+
+

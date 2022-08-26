@@ -1,0 +1,117 @@
+﻿@model StudentMark.Context.tbl_Student
+
+@{
+
+    ViewBag.Title = "Student";
+}
+
+<head>
+
+    <style>
+        tr, th {
+            text-align: center;
+        }
+
+        .td {
+            width: 200px;
+        }
+
+        thead {
+            font-weight: bold;
+            text-align: center;
+            background: #625D5D;
+            color: white;
+        }
+
+        input {
+            width: 100%;
+        }
+    </style>
+</head>
+
+
+@using (Html.BeginForm("AddStudent", "Student", FormMethod.Post))
+{
+
+    <div>
+        <div>
+            <h3 style="text-align:center;">Student Mark</h3><br />
+            @Html.HiddenFor(x => x.Roll_No)
+
+            <div class="col-md-6">
+                <label>First Name:</label>
+                @Html.TextBoxFor(x => x.Fname, new { @class = "input" })
+            </div>
+            <div class="col-md-6">
+                <label>Last Name:</label>
+                @Html.TextBoxFor(x => x.Lname, new { @class = "input" })
+
+            </div>
+        </div>
+
+        <label>Marks:</label>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="td">Subject</th>
+                    <th class="td">Total</th>
+                    <th class="td">Obtain Mark</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Math</td>
+                <td>100</td>
+                <td>@Html.TextBoxFor(x => x.Math, new { @class = "input", @id = "Math", @name = "Math", @onkeyup = "NameValidation()" })</td>
+            </tr>
+            <tr>
+                <td>Physics</td>
+                <td>100</td>
+                <td>@Html.TextBoxFor(x => x.Phy, new { @class = "input", @id = "Phy", @name = "Phy", @onkeyup = "NameValidation()" })</td>
+            </tr>
+            <tr>
+                <td>Chemistry</td>
+                <td>100</td>
+                <td>@Html.TextBoxFor(x => x.Chem, new { @class = "input", @id = "Chem", @name = "Chem", @onkeyup = "NameValidation()" })</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:right;" id="text1">Total</td>
+                <td>@Html.TextBoxFor(x => x.Total, new { @class = "input", @id = "textarea1", @name = "textarea1" })</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:right;">Percentage</td>
+                <td>@Html.TextBoxFor(x => x.Percentage, new { @class = "input", @id = "per", @name = "per" })</td>
+            </tr>
+        </table><br />
+
+        <button type="submit" value="submit" class="btn btn-primary">Save</button>
+        <a type="submit" href="@Url.Action("StudentList")" class="btn btn-danger">Cancel</a>
+
+    </div>
+}
+
+
+<script type="text/javascript">
+
+    function NameValidation() {
+        $('#textarea1').focusout(function () {
+            debugger;
+            m = parseFloat(document.getElementById("Math").value);
+            p = parseFloat(document.getElementById("Phy").value);
+            c = parseFloat(document.getElementById("Chem").value);
+
+            total = m + p + c;
+            per = ( total / 300 ) * 100;
+
+            if (!isNaN(total)) {
+                document.getElementById('textarea1').value = total;
+            }
+            if (!isNaN(per)) {
+                document.getElementById('per').value = per;
+            }
+
+        });
+    }
+</script>
+
+

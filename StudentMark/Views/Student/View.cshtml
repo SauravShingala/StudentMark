@@ -1,0 +1,87 @@
+﻿@model StudentMark.Context.tbl_Student
+
+@{
+    ViewBag.Title = "View";
+}
+
+<style>
+    tr, th {
+        text-align: center;
+    }
+
+    .td {
+        width: 200px;
+    }
+
+    thead {
+        font-weight: bold;
+        text-align: center;
+        background: #625D5D;
+        color: white;
+    }
+
+    input {
+        width: 100%;
+    }
+</style>
+
+<div class="modal-content" id="myModal">
+    <div class="modal-header">
+        <a type="button" class="close" data-dismiss="modal" aria-label="Close" href="@Url.Action("StudentList")"><span aria-hidden="true">&times;</span></a>
+        <h4 class="modal-title">Student Detail</h4>
+    </div>
+    <div class="modal-body">
+        <label>First Name:</label>
+        @Html.DisplayFor(model => model.Fname)<br />
+        <label>Last Name:</label>
+        @Html.DisplayFor(model => model.Lname)
+
+        <hr />
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="td">Subject</th>
+                    <th class="td">Total</th>
+                    <th class="td">Obtain Mark</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Maths</td>
+                <td>100</td>
+                <td> @Html.DisplayFor(model => model.Math)</td>
+            </tr>
+            <tr>
+                <td>Physics</td>
+                <td>100</td>
+                <td>@Html.DisplayFor(model => model.Phy)</td>
+            </tr>
+            <tr>
+                <td>Chemestry</td>
+                <td>100</td>
+                <td>@Html.DisplayFor(model => model.Chem)</td>
+            </tr>
+
+            <td colspan="2" style="text-align:right;">Total</td>
+            <td>@Html.DisplayFor(model => model.Total)</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:right;">Percentage</td>
+                <td>@Html.DisplayFor(model => model.Percentage)</td>
+            </tr>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <a href="@Url.Action("StudentList")" class="btn btn-danger">Close</a>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+

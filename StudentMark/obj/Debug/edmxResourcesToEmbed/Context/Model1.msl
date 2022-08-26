@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_StudentModelStoreContainer" CdmEntityContainer="db_StudentEntities">
+    <EntitySetMapping Name="tbl_Student">
+      <EntityTypeMapping TypeName="db_StudentModel.tbl_Student">
+        <MappingFragment StoreEntitySet="tbl_Student">
+          <ScalarProperty Name="Roll_No" ColumnName="Roll_No" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="Math" ColumnName="Math" />
+          <ScalarProperty Name="Phy" ColumnName="Phy" />
+          <ScalarProperty Name="Chem" ColumnName="Chem" />
+          <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+          <ScalarProperty Name="Is_Delete" ColumnName="Is_Delete" />
+          <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+          <ScalarProperty Name="Updated_date" ColumnName="Updated_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
